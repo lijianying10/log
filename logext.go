@@ -522,8 +522,7 @@ func Panicln(v ...interface{}) {
 	panic(s)
 }
 
-// -----------------------------------------
-
+// Stack Print log with call stack
 func Stack(v ...interface{}) {
 	s := fmt.Sprint(v...)
 	s += "\n"
@@ -533,5 +532,3 @@ func Stack(v ...interface{}) {
 	s += "\n"
 	Std.Output("", Lerror, 2, s)
 }
-
-// -----------------------------------------
