@@ -108,6 +108,16 @@ func (l *Logger) Tstack(traceID string, v ...interface{}) {
 	l.Output(traceID, Lerror, 2, s)
 }
 
+func (l *Logger) Tstack(v ...interface{}) {
+	s := fmt.Sprint(v...)
+	s += "\n"
+	buf := make([]byte, 1024*1024)
+	n := runtime.Stack(buf, true)
+	s += string(buf[:n])
+	s += "\n"
+	l.Output("", Lerror, 2, s)
+}
+
 func Tprint(traceID string, v ...interface{}) {
 	Std.Output(traceID, Linfo, 2, fmt.Sprint(v...))
 }
@@ -205,4 +215,14 @@ func Tstack(traceID string, v ...interface{}) {
 	s += string(buf[:n])
 	s += "\n"
 	Std.Output(traceID, Lerror, 2, s)
+}
+
+func Stack(v ...interface{}) {
+	s := fmt.Sprint(v...)
+	s += "\n"
+	buf := make([]byte, 1024*1024)
+	n := runtime.Stack(buf, true)
+	s += string(buf[:n])
+	s += "\n"
+	Std.Output("", Lerror, 2, s)
 }
