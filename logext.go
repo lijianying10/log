@@ -73,7 +73,7 @@ func New(out io.Writer, prefix string, flag int) *Logger {
 var Std = New(os.Stderr, "", Ldefault)
 
 func ToFile(filename string) {
-	f, err := os.OpenFile("testfile", os.O_APPEND|os.O_RDWR|os.O_CREATE, 0666)
+	f, err := os.OpenFile(filename, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0666)
 	if err != nil {
 		panic(err)
 	}
