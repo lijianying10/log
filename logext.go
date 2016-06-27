@@ -110,7 +110,7 @@ func moduleOf(file string) string {
 	if pos != -1 {
 		pos1 := strings.LastIndex(file[:pos], "/src/")
 		if pos1 != -1 {
-			return file[pos1+24 : pos]
+			return file[pos1+5 : pos]
 		}
 	}
 	return "UNKNOWN"
